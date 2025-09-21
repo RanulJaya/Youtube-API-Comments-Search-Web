@@ -1,0 +1,17 @@
+services:
+# run image
+  web:
+    build: .
+    volumes:
+      - service-vol:/app/
+  frontend:
+    image: "lunarzxs/pythoncron:cron"
+    volumes:
+      - service-vol:/app/
+
+volumes:
+  service-vol:
+
+  #pull from dockerhub
+  redis:
+    image: "lunarzxs/pythoncron:cron"

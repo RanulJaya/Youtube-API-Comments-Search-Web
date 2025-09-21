@@ -20,6 +20,4 @@ RUN chmod +x /app/runtest.sh
 
 RUN crontab /etc/cron.d/test.sh
 
-RUN touch /var/log/cron.log
-
-CMD cron && tail -f /var/log/cron.log
+CMD ["cron", "-f"]
