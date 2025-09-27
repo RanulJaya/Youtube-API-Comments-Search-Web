@@ -1,9 +1,14 @@
 from googleapiclient.discovery import build
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv("API_KEY")
 
 def video_obj(video_id):
     # creating youtube resource object
     youtube = build('youtube','v3',
-                    developerKey="AIzaSyDKCAfSGXcOqEkG5eU42fziV78ivBNOaq8")
+                    developerKey=api_key)
 
     # retrieve youtube video results
     video_response=youtube.commentThreads().list(
@@ -21,7 +26,7 @@ def video_obj(video_id):
             # Extracting comments
             comment = item['snippet']['topLevelComment']['snippet']['textDisplay']
             username = item['snippet']['topLevelComment']['snippet']['authorDisplayName']
-            
+
             print( username + ": \n[" + comment + "]", end='\n\n')
 
         # Again repeat
@@ -35,6 +40,6 @@ def video_obj(video_id):
             break 
 
 
-video_id = "gAkwW2tuIqE"
+video_id = "V2Tx4R96kx0"
 
 video_obj(video_id)
