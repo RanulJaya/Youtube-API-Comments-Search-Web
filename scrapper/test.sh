@@ -1,1 +1,0 @@
-* * * * * /app/runtest.sh

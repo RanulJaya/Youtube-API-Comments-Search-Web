@@ -1,0 +1,1 @@
+* * * * * /app/runbatch.sh

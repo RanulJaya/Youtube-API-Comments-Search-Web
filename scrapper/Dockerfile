@@ -12,12 +12,12 @@ RUN python3 -m venv /app/.venv
 
 RUN source .venv/bin/activate && pip install -r requirements.txt
 
-COPY test.sh /etc/cron.d/test.sh
+COPY runCron.sh /etc/cron.d/runCron.sh
 
-RUN chmod +x /etc/cron.d/test.sh
+RUN chmod +x /etc/cron.d/runCron.sh
 
-RUN chmod +x /app/runtest.sh
+RUN chmod +x /app/runbatch.sh
 
-RUN crontab /etc/cron.d/test.sh
+RUN crontab /etc/cron.d/runCron.sh
 
 CMD ["cron", "-f"]

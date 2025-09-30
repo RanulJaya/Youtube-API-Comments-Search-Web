@@ -12,6 +12,6 @@ services:
 volumes:
   service-vol:
 
-  #pull from dockerhub
+  # pull from dockerhub
   redis:
     image: "lunarzxs/pythoncron:cron"
