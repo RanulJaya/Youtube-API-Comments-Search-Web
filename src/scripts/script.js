@@ -2,7 +2,7 @@ const button = document.getElementById("test")
 
 button.addEventListener("click", async function(){
     var req = $.ajax({
-        url:"/api",
+        url:"http://localhost:8000/execApi",
         method:"POST",
         data:{title: "test"},
         dataType: "json"
