@@ -1,1 +1,6 @@
 /venv
+/runbatch.sh
+/runCron.sh
+/runtestbash.sh
+/compose.yaml
+/test.py
