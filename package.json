@@ -4,9 +4,10 @@
   "description": "YT API",
   "main": "index.js",
   "scripts": {
-    "test": "test",
     "start": "nodemon server.js",
-    "exec": "nodemon executeserver.js"
+    "exec": "nodemon executeserver.js",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "test": "webpack --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,18 @@
     "jquery": "^3.7.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "css-loader": "^7.1.2",
+    "css-minimizer-webpack-plugin": "^7.0.4",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.6",
+    "mini-css-extract-plugin": "^2.10.0",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.104.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.3",
+    "webpack-merge": "^6.0.1"
   }
 }

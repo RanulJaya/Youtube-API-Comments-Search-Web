@@ -1,20 +1,27 @@
-const button = document.getElementById("test")
+import '../css/styles.css'
 
-button.addEventListener("click", async function(){
-    var req = $.ajax({
-        url:"http://localhost:8000/execApi",
-        method:"POST",
-        data:{title: "test"},
-        dataType: "json"
-    })
+function test() {
+    console.log("work")
+}
+
+test()
+// const button = document.getElementById("test")
+
+// button.addEventListener("click", async function(){
+//     var req = $.ajax({
+//         url:"http://localhost:8000/execApi",
+//         method:"POST",
+//         data:{title: "test"},
+//         dataType: "json"
+//     })
 
 
-    req.done(function(msg){
-        console.log(msg)
-    })
+//     req.done(function(msg){
+//         console.log(msg)
+//     })
 
-    req.fail(function( jqXHR, textStatus ) {
-        console.log( "Request failed: " + textStatus );
-    });
-})
+//     req.fail(function( jqXHR, textStatus ) {
+//         console.log( "Request failed: " + textStatus );
+//     });
+// })
 
