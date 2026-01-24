@@ -3,4 +3,4 @@
 /scrapper/.env
 /node_modules
 /executeserver.js
-/dist
+# /dist
