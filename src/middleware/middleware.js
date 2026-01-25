@@ -1,18 +1,18 @@
 module.exports = function(option){
     
     function returnLink(element, urlString, index, ytUrl) {
-            if(element == 'v'){
-                for (let i = index + 2; i < ytUrl.length; i++) {
-                    // console.log(test[i])
-                    urlString += ytUrl[i]
-                }
+        
+        if(element == 'v'){
+            for (let i = index + 2; i < ytUrl.length; i++) {
+                // console.log(test[i])
+                urlString += ytUrl[i]
             }
-
-            return urlString
+        }
+        return urlString
     }
     
     return async function(req, res, next) {
-        
+
         if (req.url == '/getURL') {
             console.log(option)
             const ytUrl = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
