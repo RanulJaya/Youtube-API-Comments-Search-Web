@@ -12,6 +12,7 @@ module.exports = function(option){
     }
     
     return async function(req, res, next) {
+        
         if (req.url == '/getURL') {
             console.log(option)
             const ytUrl = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
