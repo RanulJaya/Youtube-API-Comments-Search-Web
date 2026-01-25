@@ -1,30 +1,40 @@
 module.exports = function(option){
-    return async function(req, res, next) {
-        if (req.url == '/getURL') {
-            res.send("test")
-            const test = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
-
-            let urlString = '';
-
-            for (let index = 0; index < test.length; index++) {
-                const element = test[index];
-
-                if(element == 'v'){
-                    for (let i = index + 2; i < test.length; i++) {
-                        // console.log(test[i])
-                        urlString += test[i]
-                    }
-
-                    break;
+    
+    function returnLink(element, urlString, index, ytUrl) {
+            if(element == 'v'){
+                for (let i = index + 2; i < ytUrl.length; i++) {
+                    // console.log(test[i])
+                    urlString += ytUrl[i]
                 }
             }
 
-            const url = 'https://axgj7aibzsvfw5rzsgd3vfkx6y0kuorg.lambda-url.us-east-1.on.aws/?api_key=' + urlString
+            return urlString
+    }
+    
+    return async function(req, res, next) {
+        if (req.url == '/getURL') {
+            console.log(option)
+            const ytUrl = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
 
+            let urlString = '';
+
+            for (let index = 0; index < ytUrl.length; index++) {
+                const element = ytUrl[index];
+                var urlEncodedString = returnLink(element, urlString, index, ytUrl)
+
+                if (urlEncodedString != '') {
+                    break
+                }
+            }
+
+            const url = 'https://axgj7aibzsvfw5rzsgd3vfkx6y0kuorg.lambda-url.us-east-1.on.aws/?api_key=' + urlEncodedString
+            
             try {
                 const response = await fetch(url)
+                console.log(urlEncodedString)
                 const result = await response.json()
-                console.log(Object.keys(result).length)
+                // res.send(Object.keys(result).length)
+                res.send(result[0][0])
             } catch (error) {
                 console.log(error)
             }

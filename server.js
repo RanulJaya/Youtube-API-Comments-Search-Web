@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
 
 app.use(requestMiddleware({opt1 : path.join(__dirname, 'dist')}))
 
-app.post('/api', async(res, req) => {
-    req.send(res.body)
+app.get('/api', async(res, req) => {
+    req.send('test')
 })
 
 app.listen(port, () => {
