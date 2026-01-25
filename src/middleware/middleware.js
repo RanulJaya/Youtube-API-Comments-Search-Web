@@ -11,7 +11,7 @@ module.exports = function(option){
         return urlString
     }
     
-    // YT url 
+    // YT url get request
     return async function(req, res, next) {
 
         if (req.url == '/getURL') {
