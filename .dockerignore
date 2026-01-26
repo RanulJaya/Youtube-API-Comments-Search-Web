@@ -1,2 +1,4 @@
 /node_modules
 /dist
+/scrapper
+/executeserver.js
