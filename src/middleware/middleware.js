@@ -14,8 +14,8 @@ module.exports = function(option){
     // YT url get request
     return async function(req, res, next) {
 
-        if (req.url == '/getURL') {
-            console.log(option)
+        if (req.url === '/getURL') {
+            // console.log(option)
             const ytUrl = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
 
             let urlString = '';
@@ -36,7 +36,7 @@ module.exports = function(option){
                 console.log(urlEncodedString)
                 const result = await response.json()
                 // res.send(Object.keys(result).length)
-                res.send(result[0][0])
+                res.send(result)
             } catch (error) {
                 console.log(error)
             }

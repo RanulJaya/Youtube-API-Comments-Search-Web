@@ -1,10 +1,32 @@
 import '../css/styles.css'
 
+
+// async function testing() {
+//     const url = 'http://localhost:3000/getURL'
+
+//     try {
+//         const response = await fetch(url)
+//         if(!response.ok) {
+//             throw new Error(`Response status: ${response.status}`);
+//         }
+
+//         const result = await response.json()
+
+//         console.log(JSON.stringify(result))
+//     } catch (error) {
+//         console.log(error.message);
+//     }
+// }   
+
+// testing()
+
 function test() {
     console.log("work")
 }
 
 test()
+
+
 // const button = document.getElementById("test")
 
 // button.addEventListener("click", async function(){
