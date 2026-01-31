@@ -1,24 +1,24 @@
 import '../css/styles.css'
 
 
-// async function testing() {
-//     const url = 'https://www.goldenretrieverlunar.com/getURL'
+async function testing() {
+    const url = 'https://www.goldenretrieverlunar.com/getURL'
 
-//     try {
-//         const response = await fetch(url)
-//         if(!response.ok) {
-//             throw new Error(`Response status: ${response.status}`);
-//         }
+    try {
+        const response = await fetch(url)
+        if(!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
 
-//         const result = await response.json()
+        const result = await response.json()
 
-//         console.log(JSON.stringify(result))
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-// }   
+        console.log(JSON.stringify(result))
+    } catch (error) {
+        console.log(error.message);
+    }
+}   
 
-// testing()
+testing()
 
 function test() {
     console.log("work")
