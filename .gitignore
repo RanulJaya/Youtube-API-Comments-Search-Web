@@ -1,0 +1,7 @@
+/scrapper/venv
+/scrapper/.venv
+/scrapper/.env
+/node_modules
+/executeserver.js
+/dist
+/scrapper/credentials.json

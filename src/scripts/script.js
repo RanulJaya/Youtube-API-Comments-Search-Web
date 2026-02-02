@@ -12,7 +12,7 @@ async function testing() {
 
         const result = await response.json()
 
-        console.log(JSON.stringify(result))
+        console.log(JSON.stringify(result[1]["comment"]))
     } catch (error) {
         console.log(error.message);
     }

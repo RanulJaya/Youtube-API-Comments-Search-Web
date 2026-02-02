@@ -57,7 +57,7 @@ def video_obj(video_id):
             likes = item['snippet']['topLevelComment']['snippet']['likeCount']
             
             # Create an array for comments and append into a dict
-            data = {comment}
+            data = {"username": username, "comment": comment}
             loadItem.append(data)
 
         # Again repeat
@@ -78,7 +78,9 @@ def video_obj(video_id):
 
 
 # video_id = "nZU9_2bTNTM"
-# video_obj(video_id)
+# obj = video_obj(video_id)
+# serial = json.dumps(obj, indent=4, default=json_serializer)
+# print(serial)
 
 # Hanlder to run the container for parsing string from a url and output the body
 def handler(event, context):
@@ -87,12 +89,12 @@ def handler(event, context):
     # url of the parameter
     value1 = event['queryStringParameters']['api_key']
     # data in a json format
-    data = {"test": value1}
+    # data = {"test": value1}
     video_id = value1
 
     # Parsing the url to function to output the dict and then convert to a json format
-    test = video_obj(video_id)
-    convertJson = json.dumps(test, indent=4, default=json_serializer)
+    vid_obj = video_obj(video_id)
+    convertJson = json.dumps(vid_obj, indent=4, default=json_serializer)
     # api = json.dumps(data, indent=4)
 
     # return body into a json format header
