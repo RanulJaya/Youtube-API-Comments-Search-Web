@@ -20,7 +20,7 @@ function searchFunction(e) {
         td = document.querySelectorAll("td");
     } 
 
-    const response = fetch('http://localhost:3000/postURL', {
+    const response = fetch('https://www.goldenretrieverlunar.com/postURL', {
         method: 'POST',
         headers: header,
         body: JSON.stringify({ message: searchText.value.toString()})
