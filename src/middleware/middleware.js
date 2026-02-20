@@ -14,10 +14,9 @@ module.exports = function(option){
     // YT url get request
     return async function(req, res, next) {
 
-        if (req.url === '/getURL') {
-            // console.log(option)
-            const ytUrl = 'https://www.youtube.com/watch?v=0eaJqxB3SIk'
-
+        if (req.url === '/postURL') {
+            
+            const ytUrl = String(req.body.message)
             let urlString = '';
 
             for (let index = 0; index < ytUrl.length; index++) {
@@ -33,14 +32,14 @@ module.exports = function(option){
             
             try {
                 const response = await fetch(url)
-                console.log(urlEncodedString)
                 const result = await response.json()
-                // res.send(Object.keys(result).length)
-                res.send(result)
+                
+                res.json(result)
             } catch (error) {
                 console.log(error)
             }
         }
+
         next()
     }
 }

@@ -4,10 +4,11 @@
   "description": "YT API",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "NODE_ENV=production webpack --config webpack.prod.js && nodemon server.js",
     "exec": "nodemon executeserver.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.js",
-    "test": "webpack --config webpack.dev.js"
+    "test": "webpack --config webpack.dev.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",

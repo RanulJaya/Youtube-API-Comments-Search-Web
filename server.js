@@ -9,7 +9,6 @@ const cors = require('cors')
 
 
 app.use(cors())
-
 app.use(express.static(path.join(__dirname, 'dist')))
 
 const requestMiddleware = require('./src/middleware/middleware.js')
@@ -18,8 +17,9 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(bodyparser.text({type: 'application/javascript'}))
 app.use(bodyparser.text({type: 'text/css'}))
 app.use(bodyparser.text({type: 'text/html'}))
+app.use(express.json());
 
-app.use(requestMiddleware({opt1 : 'test'}))
+app.use(requestMiddleware())
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`)

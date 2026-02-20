@@ -9,15 +9,16 @@ from aws_lambda_powertools import Logger
 import logging
 
 # load_dotenv()
-# api_key = os.getenv("API_KEY")
+api_key = os.getenv("API_KEY")
 
 logger = Logger()
 logger.setLevel(logging.INFO)
 
 # Get s3 bucket of a credential of 
+# Bucket = 'stores3bucketslunar'
 def get_credentials():
     s3 = boto3.client('s3')
-    obj = s3.get_object(Bucket='stores3bucketslunar', Key='app/credentials.json')
+    obj = s3.get_object(Bucket=api_key, Key='app/credentials.json')
     # print(obj)
     file_content = obj['Body'].read().decode('utf-8')
     # print(file_content)
@@ -88,14 +89,11 @@ def handler(event, context):
 
     # url of the parameter
     value1 = event['queryStringParameters']['api_key']
-    # data in a json format
-    # data = {"test": value1}
     video_id = value1
 
     # Parsing the url to function to output the dict and then convert to a json format
     vid_obj = video_obj(video_id)
     convertJson = json.dumps(vid_obj, indent=4, default=json_serializer)
-    # api = json.dumps(data, indent=4)
 
     # return body into a json format header
     return {
