@@ -7,7 +7,6 @@ const path = require('path')
 const bodyparser = require('body-parser')
 const cors = require('cors')
 
-
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'dist')))
 
