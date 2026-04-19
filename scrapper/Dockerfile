@@ -26,7 +26,7 @@
 
 FROM public.ecr.aws/lambda/python:3.12
 
-# Copy requirements.txt
+# Copy everything to /var/task
 COPY . ${LAMBDA_TASK_ROOT}
 
 # Install the specified packages
