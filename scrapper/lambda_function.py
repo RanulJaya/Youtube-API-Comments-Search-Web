@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
 import json
 import boto3
 from google.oauth2 import service_account
@@ -8,20 +8,21 @@ import time
 from aws_lambda_powertools import Logger
 import logging
 
-# load_dotenv()
-api_key = os.getenv("API_KEY")
-
 logger = Logger()
 logger.setLevel(logging.INFO)
 
 # Get s3 bucket of a credential of 
 # Bucket = 'stores3bucketslunar'
 def get_credentials():
+    load_dotenv()
+    API_KEY = os.getenv("API_KEY")
+    BUCKET = os.getenv("BUCKET")
+
     s3 = boto3.client('s3')
-    obj = s3.get_object(Bucket=api_key, Key='app/credentials.json')
+    obj = s3.get_object(Bucket=BUCKET, Key='app/credentials.json')
     # print(obj)
     file_content = obj['Body'].read().decode('utf-8')
-    # print(file_content)
+    print(file_content)
     credentials = json.loads(file_content)['API_KEY']
     return credentials
 
@@ -41,7 +42,9 @@ def video_obj(video_id):
     # retrieve youtube video results
     video_response=youtube.commentThreads().list(
         part='snippet,replies',
-        videoId= video_id
+        maxResults=10,
+        videoId= video_id,
+
     ).execute()
 
     
@@ -61,6 +64,9 @@ def video_obj(video_id):
             data = {"username": username, "comment": comment}
             loadItem.append(data)
 
+        if len(loadItem) >= 100:
+            break
+
         # Again repeat
         if 'nextPageToken' in video_response:
             video_response = youtube.commentThreads().list(
@@ -73,15 +79,18 @@ def video_obj(video_id):
     
     # Return dictionary
     diction = dict(enumerate(loadItem))
+
+    print(diction)
     
     return diction
 
 
 
-# video_id = "nZU9_2bTNTM"
+# video_id = "1V_xRb0x9aw"
 # obj = video_obj(video_id)
 # serial = json.dumps(obj, indent=4, default=json_serializer)
 # print(serial)
+
 
 # Hanlder to run the container for parsing string from a url and output the body
 def handler(event, context):
